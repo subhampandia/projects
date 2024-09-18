@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #555;
+    }
+    input[type="text"], input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    .link {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .link a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    .error {
+      color: red;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Register</h1>
+    <form id="registerForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
+
+      <div id="passwordError" class="error"></div>
+
+      <button type="submit">Register</button>
+    </form>
+    <div class="link">
+      <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const passwordError = document.getElementById('passwordError');
+      passwordError.innerHTML = ''; // Clear any previous error messages
+
+      // Password validation pattern
+      const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,14}$/;
+
+      if (!passwordPattern.test(password)) {
+        passwordError.innerHTML = 'Password must be 8-14 characters long, contain at least one lowercase letter, one uppercase letter, one number, and one special character.';
+        return;
+      }
+
+      // Simulate registration and redirect to login page if password is valid
+      alert('Registration successful! Redirecting to Login page...');
+      window.location.href = "login.html"; // Redirect to login.html
+    });
+  </script>
+</body>
+</html>

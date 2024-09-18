@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus Ticket Booking</title>
+  <style>
+     .logout {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .logout button {
+      padding: 10px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .logout button:hover {
+      background-color: #c82333;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #555;
+    }
+
+    select, input[type="date"], input[type="time"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #confirmation {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bus Ticket Booking</h1>
+    <div id="welcomeMessage" class="hidden"></div>
+    <form id="bookingForm">
+      <label for="origin">Origin:</label>
+      <select id="origin" required>
+        <option value="">Select origin</option>
+        <option value="City A">City A</option>
+        <option value="City B">City B</option>
+        <option value="City C">City C</option>
+      </select>
+
+      <label for="destination">Destination:</label>
+      <select id="destination" required>
+        <option value="">Select destination</option>
+        <option value="City D">City D</option>
+        <option value="City E">City E</option>
+        <option value="City F">City F</option>
+      </select>
+
+      <label for="date">Travel Date:</label>
+      <input type="date" id="date" required>
+
+      <label for="time">Departure Time:</label>
+      <input type="time" id="time" required>
+
+      <button type="submit">Book Ticket</button>
+    </form>
+    <div id="confirmation" class="hidden"></div>
+    <div class="logout">
+      <button id="logoutButton">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    const username = "JohnDoe"; // Placeholder for real user session
+
+document.getElementById('welcomeMessage').classList.remove('hidden');
+document.getElementById('welcomeMessage').innerHTML = `<h2>Welcome, ${username}!</h2>`;
+
+document.getElementById('bookingForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const origin = document.getElementById('origin').value;
+  const destination = document.getElementById('destination').value;
+  const date = document.getElementById('date').value;
+  const time = document.getElementById('time').value;
+
+  if (origin && destination && date && time) {
+    document.getElementById('confirmation').classList.remove('hidden');
+    document.getElementById('confirmation').innerHTML = `
+      <h2>Booking Confirmed!</h2>
+      <p><strong>From:</strong> ${origin}</p>
+      <p><strong>To:</strong> ${destination}</p>
+      <p><strong>Date:</strong> ${date}</p>
+      <p><strong>Time:</strong> ${time}</p>
+    `;
+  } else {
+    alert('Please fill in all fields.');
+  }
+});
+
+// Logout function to redirect to login page
+document.getElementById('logoutButton').addEventListener('click', function() {
+  alert('Logging out...');
+  window.location.href = "login.html"; // Redirect to login.html
+});
+  </script>
+</body>
+</html>
