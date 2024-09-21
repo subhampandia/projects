@@ -16,26 +16,25 @@ document.addEventListener("DOMContentLoaded", () => {
   
     let tasks = [];
   
-    // Check for saved theme in localStorage and apply it
+   
     if (localStorage.getItem("theme") === "dark") {
       document.body.classList.add("dark-mode");
       darkModeToggle.textContent = "☀️"; // Update button text for light mode
     }
   
-    // Dark mode toggle event
     darkModeToggle.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
   
       if (document.body.classList.contains("dark-mode")) {
-        darkModeToggle.textContent = "☀️"; // Switch to light mode icon
-        localStorage.setItem("theme", "dark"); // Save preference to localStorage
+        darkModeToggle.textContent = "☀️"; 
+        localStorage.setItem("theme", "dark"); 
       } else {
-        darkModeToggle.textContent = "🌙"; // Switch to dark mode icon
-        localStorage.setItem("theme", "light"); // Save preference to localStorage
+        darkModeToggle.textContent = "🌙"; 
+        localStorage.setItem("theme", "light"); 
       }
     });
   
-    // Add Task Functionality
+   
     addTaskButton.addEventListener("click", () => {
       const taskName = taskInput.value;
       const category = taskCategory.value;
@@ -51,9 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   
-    // Render Tasks
+  
     function renderTasks(filter = "all") {
-      taskList.innerHTML = ""; // Clear the task list
+      taskList.innerHTML = ""; 
       const filteredTasks = tasks.filter(task => filter === "all" || task.category === filter);
   
       filteredTasks.forEach(task => {
@@ -76,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   
-    // Update Task Counts
+   
     function updateTaskCounts() {
       const totalTasks = tasks.length;
       const personalTasks = tasks.filter(task => task.category === "personal").length;
@@ -88,11 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
       totalTaskCount.textContent = totalTasks;
     }
   
-    // Show tasks in a new window
+    
     function openFilteredTasksWindow(filter) {
       let categoryHeader;
       
-      // Set the header text based on the filter
+     
       if (filter === "all") {
         categoryHeader = "All Tasks";
       } else if (filter === "personal") {
@@ -101,10 +100,10 @@ document.addEventListener("DOMContentLoaded", () => {
         categoryHeader = "Work Tasks";
       }
   
-      // Open a new window
+     
       const newWindow = window.open("", "_blank");
   
-      // Write to the new window with a header and task list
+      
       newWindow.document.write(`
         <html>
         <head>
@@ -141,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
       const taskListInNewWindow = newWindow.document.getElementById("task-list");
   
-      // Filter tasks and add them to the new window
+      
       const filteredTasks = tasks.filter(task => filter === "all" || task.category === filter);
   
       filteredTasks.forEach(task => {
@@ -151,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   
-    // Button event listeners to open tasks in a new window
+   
     showAllTasksButton.addEventListener("click", () => {
       openFilteredTasksWindow("all");
     });
