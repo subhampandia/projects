@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management App</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Font Awesome for Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Task Manager</h1>
+    <button id="dark-mode-toggle">🌙</button> <!-- Button for toggling dark mode -->
+  </header>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <aside>
+      <ul>
+        <li><a href="#" id="show-all-tasks"><i class="fas fa-tasks"></i> All Tasks (<span id="all-task-count">0</span>)</a></li>
+        <li><a href="#" id="show-personal-tasks"><i class="fas fa-user"></i> Personal Tasks (<span id="personal-task-count">0</span>)</a></li>
+        <li><a href="#" id="show-work-tasks"><i class="fas fa-briefcase"></i> Work Tasks (<span id="work-task-count">0</span>)</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <section class="task-input">
+        <input type="text" id="task-input" placeholder="Add a new task...">
+        <select id="task-category">
+          <option value="personal">Personal</option>
+          <option value="work">Work</option>
+        </select>
+        <button id="add-task">Add Task</button>
+      </section>
+
+      <section class="task-list" id="task-list">
+        <!-- Tasks will be dynamically added here -->
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>Total tasks remaining: <span id="total-task-count">0</span></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
